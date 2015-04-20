@@ -15,6 +15,8 @@
 		812463181AE54607005959E5 /* RouterExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812463171AE54607005959E5 /* RouterExampleTests.swift */; };
 		812463311AE5484D005959E5 /* Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812463271AE546C4005959E5 /* Router.framework */; };
 		812463321AE5484D005959E5 /* Router.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 812463271AE546C4005959E5 /* Router.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81F7B2551AE57D9500DEB24F /* ExampleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F7B2541AE57D9500DEB24F /* ExampleSpec.swift */; };
+		8A9DE3FE049B9274DB7C1BEF /* Pods_RouterExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C003CCB074FC3959BC880D2 /* Pods_RouterExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1BE17E62659A3CF4E0014046 /* Pods-RouterExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouterExampleTests/Pods-RouterExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C003CCB074FC3959BC880D2 /* Pods_RouterExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouterExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		812462FC1AE54607005959E5 /* RouterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		812463001AE54607005959E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		812463011AE54607005959E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		812463161AE54607005959E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		812463171AE54607005959E5 /* RouterExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterExampleTests.swift; sourceTree = "<group>"; };
 		812463211AE546C4005959E5 /* Router.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Router.xcodeproj; sourceTree = "<group>"; };
+		81F7B2541AE57D9500DEB24F /* ExampleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSpec.swift; sourceTree = "<group>"; };
+		C3CD6FC39BD3F9A6817CEE22 /* Pods-RouterExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouterExampleTests/Pods-RouterExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9DE3FE049B9274DB7C1BEF /* Pods_RouterExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +109,8 @@
 				812463141AE54607005959E5 /* Integration */,
 				812462FD1AE54607005959E5 /* Products */,
 				812463211AE546C4005959E5 /* Router.xcodeproj */,
+				AE0DD895E533CAD9AB109A65 /* Pods */,
+				B1C8613DEFE29FBEFFE27661 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				812463171AE54607005959E5 /* RouterExampleTests.swift */,
+				81F7B2541AE57D9500DEB24F /* ExampleSpec.swift */,
 				812463151AE54607005959E5 /* Supporting Files */,
 			);
 			path = Integration;
@@ -159,6 +169,23 @@
 				812463291AE546C4005959E5 /* RouterTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AE0DD895E533CAD9AB109A65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1BE17E62659A3CF4E0014046 /* Pods-RouterExampleTests.debug.xcconfig */,
+				C3CD6FC39BD3F9A6817CEE22 /* Pods-RouterExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B1C8613DEFE29FBEFFE27661 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C003CCB074FC3959BC880D2 /* Pods_RouterExampleTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8124631E1AE54607005959E5 /* Build configuration list for PBXNativeTarget "RouterExampleTests" */;
 			buildPhases = (
+				1C86FF2789DCBF4E1BE75156 /* Check Pods Manifest.lock */,
 				8124630D1AE54607005959E5 /* Sources */,
 				8124630E1AE54607005959E5 /* Frameworks */,
 				8124630F1AE54607005959E5 /* Resources */,
+				817395ACBA7983AAF0EE26DE /* Embed Pods Frameworks */,
+				49FA03BA406F665B6E1B30EC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,6 +312,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C86FF2789DCBF4E1BE75156 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		49FA03BA406F665B6E1B30EC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouterExampleTests/Pods-RouterExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		817395ACBA7983AAF0EE26DE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouterExampleTests/Pods-RouterExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		812462F81AE54607005959E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -297,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				812463181AE54607005959E5 /* RouterExampleTests.swift in Sources */,
+				81F7B2551AE57D9500DEB24F /* ExampleSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,11 +523,13 @@
 		};
 		8124631F1AE54607005959E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BE17E62659A3CF4E0014046 /* Pods-RouterExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -463,11 +544,13 @@
 		};
 		812463201AE54607005959E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3CD6FC39BD3F9A6817CEE22 /* Pods-RouterExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Integration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

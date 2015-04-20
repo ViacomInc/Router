@@ -14,28 +14,6 @@ class RouterSpecs: QuickSpec {
     
     override func spec() {
         
-//        describe("plist config") {
-//            
-//            it("deeplink scheme is in plist") {
-//                var plist: NSDictionary?
-//                if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
-//                    plist = NSDictionary(contentsOfFile: path)
-//                    
-//                    let urlTypes = plist!["CFBundleURLTypes"] as! NSArray
-//                    let firstItem = urlTypes[0] as! NSDictionary
-//                    
-//                    let urlName = firstItem["CFBundleURLName"] as! String
-//                    expect(urlName).to(equal("com.viacom.MPSurfer"))
-//                    
-//                    let schemeArray = firstItem["CFBundleURLSchemes"] as! NSArray
-//                    let firstScheme = schemeArray[0] as! String
-//                    expect(firstScheme).to(equal("surfer"))
-//                } else {
-//                    expect(0).to(equal(1))
-//                }
-//            }
-//        }
-        
         describe("Route") {
             
             describe(".regex") {
