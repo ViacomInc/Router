@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         if let route = router.match(url) {
-            println("matched \(route.route)")
             return true
         }
         
