@@ -48,12 +48,66 @@
                     <navigationItem key="navigationItem" id="LZu-g4-NOU"/>
                     <connections>
                         <outlet property="debugLabel" destination="jDA-Yk-4ty" id="QHK-Lj-n5y"/>
-                        <segue destination="RLJ-cj-fWt" kind="show" identifier="routeOneSegue" id="nTA-hi-jvX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757" y="449"/>
+        </scene>
+        <!--My Root View Controller-->
+        <scene sceneID="iSq-L8-rBl">
+            <objects>
+                <viewController id="IHf-aB-Jn0" customClass="MyRootViewController" customModule="RouterExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="weP-RT-0Kv"/>
+                        <viewControllerLayoutGuide type="bottom" id="mPE-r3-2P0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H63-4y-lxW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0X-qB-Ahc">
+                                <rect key="frame" x="240" y="149" width="120" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="5Bh-R7-fGu"/>
+                                </constraints>
+                                <state key="normal" title="List">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onListClick:" destination="IHf-aB-Jn0" eventType="touchUpInside" id="LzI-YV-mZD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPL-T2-u96">
+                                <rect key="frame" x="240" y="223" width="120" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="HtX-b7-Lnj"/>
+                                </constraints>
+                                <state key="normal" title="Detail">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDetailClick:" destination="IHf-aB-Jn0" eventType="touchUpInside" id="tmI-C6-MXx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yPL-T2-u96" firstAttribute="centerX" secondItem="R0X-qB-Ahc" secondAttribute="centerX" id="CDP-rJ-98C"/>
+                            <constraint firstItem="R0X-qB-Ahc" firstAttribute="centerX" secondItem="H63-4y-lxW" secondAttribute="centerX" id="dQc-Ba-1jg"/>
+                            <constraint firstItem="R0X-qB-Ahc" firstAttribute="top" secondItem="weP-RT-0Kv" secondAttribute="bottom" constant="85" id="eTe-Xe-IDM"/>
+                            <constraint firstItem="yPL-T2-u96" firstAttribute="top" secondItem="R0X-qB-Ahc" secondAttribute="bottom" constant="44" id="zrX-0V-ZUB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="byC-r0-NMm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zf2-kQ-rwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="449"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XZo-ca-ovd">
@@ -113,12 +167,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="55i-sV-9LC"/>
+                        <segue destination="IHf-aB-Jn0" kind="relationship" relationship="rootViewController" id="fmy-9x-DN6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXC-Oc-elk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-24" y="449"/>
+            <point key="canvasLocation" x="-700" y="449"/>
         </scene>
     </scenes>
 </document>

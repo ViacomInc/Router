@@ -15,6 +15,7 @@
 		812463181AE54607005959E5 /* RouterExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812463171AE54607005959E5 /* RouterExampleTests.swift */; };
 		812463311AE5484D005959E5 /* Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812463271AE546C4005959E5 /* Router.framework */; };
 		812463321AE5484D005959E5 /* Router.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 812463271AE546C4005959E5 /* Router.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8185158D1AE6AB4300A26C57 /* MyRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185158C1AE6AB4300A26C57 /* MyRootViewController.swift */; };
 		81F7B2551AE57D9500DEB24F /* ExampleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F7B2541AE57D9500DEB24F /* ExampleSpec.swift */; };
 		8A9DE3FE049B9274DB7C1BEF /* Pods_RouterExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C003CCB074FC3959BC880D2 /* Pods_RouterExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		812463161AE54607005959E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		812463171AE54607005959E5 /* RouterExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterExampleTests.swift; sourceTree = "<group>"; };
 		812463211AE546C4005959E5 /* Router.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Router.xcodeproj; sourceTree = "<group>"; };
+		8185158C1AE6AB4300A26C57 /* MyRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRootViewController.swift; sourceTree = "<group>"; };
 		81F7B2541AE57D9500DEB24F /* ExampleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSpec.swift; sourceTree = "<group>"; };
 		C3CD6FC39BD3F9A6817CEE22 /* Pods-RouterExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouterExampleTests/Pods-RouterExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 			children = (
 				812463011AE54607005959E5 /* AppDelegate.swift */,
 				812463031AE54607005959E5 /* ViewController.swift */,
+				8185158C1AE6AB4300A26C57 /* MyRootViewController.swift */,
 				812463051AE54607005959E5 /* Main.storyboard */,
 				812463081AE54607005959E5 /* Images.xcassets */,
 				8124630A1AE54607005959E5 /* LaunchScreen.xib */,
@@ -367,6 +370,7 @@
 			files = (
 				812463041AE54607005959E5 /* ViewController.swift in Sources */,
 				812463021AE54607005959E5 /* AppDelegate.swift in Sources */,
+				8185158D1AE6AB4300A26C57 /* MyRootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
