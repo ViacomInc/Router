@@ -11,9 +11,16 @@ import Router
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var debugLabel: UILabel!
+    var debugText: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if let debugText = debugText {
+            debugLabel.text = debugText
+        }
     }
 
     override func didReceiveMemoryWarning() {

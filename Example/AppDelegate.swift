@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import Router
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    let router: Router = Router()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let root = self.window?.rootViewController as! UINavigationController
+        
+        router.bind("/route/one") { (req) -> Void in
+            let list: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneList") as! ViewController
+            list.debugText = req.route.route
+            root.pushViewController(list, animated: true)
+        }
+        
+        router.bind("/route/one/:id") { (req) -> Void in
+            let list: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneList") as! ViewController
+            list.debugText = "deeplink from \(req.route.route)"
+            let detail: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneDetail") as! ViewController
+            detail.debugText = req.route.route
+            root.pushViewController(list, animated: false)
+            root.pushViewController(detail, animated: true)
+        }
+        
         return true
     }
 
@@ -40,7 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if let route = router.match(url) {
+            println("matched \(route.route)")
+            return true
+        }
+        
+        return false
+    }
 
 }
 

@@ -17,7 +17,7 @@ public class Route {
     let urlParameter: NSRegularExpression = NSRegularExpression(pattern: urlParameterPattern, options: .CaseInsensitive, error: nil)!
     
     // parameterized route, ie: /video/:id
-    var route: String! {
+    public var route: String! {
         didSet {
             if let regex = regex() {
                 routePattern = regex
@@ -38,8 +38,6 @@ public class Route {
     private func setupRoute(aRoute: String) {
         route = aRoute
     }
-    
-    //
     
     /**
         Forms a regex pattern of the route

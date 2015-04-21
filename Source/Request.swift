@@ -10,12 +10,17 @@ import UIKit
 
 public class Request {
     
-    internal var route: Route!
-    internal var urlParams: [String: String] = [String: String]()
-    internal var queryParams: [String: String]?
+    private var _route: Route!
     
-    init(aRoute: Route, urlParams: [NSURLQueryItem], queryParams: [NSURLQueryItem]?) {
-        self.route = aRoute
+    public var route: Route! {
+        get { return _route }
+    }
+    
+    private var urlParams: [String: String] = [String: String]()
+    private var queryParams: [String: String]?
+    
+    public init(aRoute: Route, urlParams: [NSURLQueryItem], queryParams: [NSURLQueryItem]?) {
+        self._route = aRoute
         
         for param in urlParams {
             if let value = param.value {
@@ -39,7 +44,7 @@ public class Request {
         :param: name Key of the param
         :returns: value of the the param
     */
-    func param(name: String) -> String? {
+    public func param(name: String) -> String? {
         return self.urlParams[name]
     }
     
@@ -49,7 +54,7 @@ public class Request {
         :param: name Key of the param
         :returns: value of the the param
     */
-    func query(name: String) -> String? {
+    public func query(name: String) -> String? {
         if let queryParams = self.queryParams {
             return queryParams[name]
         }
