@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16549BE8EC1DE3C02843B8E9 /* Pods_RouterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD11BF5AC861280FDB575872 /* Pods_RouterTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		818515921AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818515911AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift */; };
 		819D12231AE5425D0009FEA1 /* Router.h in Headers */ = {isa = PBXBuildFile; fileRef = 819D12221AE5425D0009FEA1 /* Router.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		819D12291AE5425D0009FEA1 /* Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D121D1AE5425D0009FEA1 /* Router.framework */; };
 		819D12301AE5425D0009FEA1 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D122F1AE5425D0009FEA1 /* RouterTests.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		35914066E0F13072E74B0E3E /* Pods-RouterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouterTests/Pods-RouterTests.release.xcconfig"; sourceTree = "<group>"; };
+		818515911AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterMatchingPerfTests.swift; sourceTree = "<group>"; };
 		819D121D1AE5425D0009FEA1 /* Router.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Router.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819D12211AE5425D0009FEA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		819D12221AE5425D0009FEA1 /* Router.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Router.h; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				819D12421AE542EE0009FEA1 /* RouterSpecs.swift */,
 				819D122F1AE5425D0009FEA1 /* RouterTests.swift */,
+				818515911AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift */,
 				819D122D1AE5425D0009FEA1 /* Supporting Files */,
 			);
 			path = Tests;
@@ -311,6 +314,7 @@
 			files = (
 				819D123F1AE5429A0009FEA1 /* Route.swift in Sources */,
 				819D12441AE542EE0009FEA1 /* RouterSpecs.swift in Sources */,
+				818515921AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift in Sources */,
 				819D12411AE5429A0009FEA1 /* Request.swift in Sources */,
 				819D123D1AE5429A0009FEA1 /* Router.swift in Sources */,
 				819D12301AE5425D0009FEA1 /* RouterTests.swift in Sources */,
