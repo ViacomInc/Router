@@ -14,6 +14,8 @@ A micro routing library written in swift, primarily for deep linking use cases
 ### Usage
 
 ```swift
+import Router
+
 // create your router
 let router: Router = Router()
 
