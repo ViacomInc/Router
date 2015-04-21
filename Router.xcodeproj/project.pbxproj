@@ -97,10 +97,10 @@
 		819D121F1AE5425D0009FEA1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				819D12221AE5425D0009FEA1 /* Router.h */,
 				819D12391AE5429A0009FEA1 /* Router.swift */,
 				819D123A1AE5429A0009FEA1 /* Route.swift */,
 				819D123B1AE5429A0009FEA1 /* Request.swift */,
-				819D12221AE5425D0009FEA1 /* Router.h */,
 				819D12201AE5425D0009FEA1 /* Supporting Files */,
 			);
 			path = Source;
@@ -427,6 +427,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -444,6 +445,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

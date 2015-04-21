@@ -10,7 +10,7 @@ import UIKit
 
 public class Router {
     
-    typealias routeHandler = (req: Request) -> Void
+    public typealias routeHandler = (req: Request) -> Void
     internal var routes: [Route: routeHandler] = [Route: routeHandler]()
     
     public init() {}
@@ -21,7 +21,7 @@ public class Router {
         :param: aRoute A string reprsentation of the route. It can include url params, for example id in /video/:id
         :param: callback Triggered when a route is matched
     */
-    func bind(aRoute: String, callback: routeHandler) {
+    public func bind(aRoute: String, callback: routeHandler) {
         let route = Route(aRoute: aRoute)
         routes[route] = callback
     }
@@ -32,7 +32,7 @@ public class Router {
         :param: url An NSURL of an incoming request to the router
         :returns: The matched route or nil
     */
-    func match(url: NSURL) -> Route? {
+    public func match(url: NSURL) -> Route? {
         
         var routeComponents: NSURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
 
@@ -41,6 +41,7 @@ public class Router {
         if let host = routeComponents.host {
             routeToMatch += "/\(host)"
         }
+        
         if let path = routeComponents.path {
             routeToMatch += "\(path)"
         }
