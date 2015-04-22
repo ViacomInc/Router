@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var debugLabel: UILabel!
     var debugText: String?
+    var id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,10 @@ class ViewController: UIViewController {
         
         if let debugText = debugText {
             debugLabel.text = debugText
+        }
+        
+        if let id = id {
+            debugText.text += "- { id: '\(id)'}"
         }
     }
 

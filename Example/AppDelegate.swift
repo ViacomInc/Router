@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         router.bind("/route/one/:id") { (req) -> Void in
             let list: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneList") as! ViewController
             list.debugText = "deeplink from \(req.route.route)"
-            
+            list.id = req.param("id")!
             let detail: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneDetail") as! ViewController
             detail.debugText = req.route.route
             
