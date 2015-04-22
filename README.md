@@ -82,7 +82,7 @@ var route = router.match(url)
 
 ### Request Object
 
-A request object accessible in the route callback. Access url params in the closure (ie. id from /route/:id) by using ```.param()``` function
+A request object is accessible in the closure arg. Access url params in the closure (ie. id from /route/:id) by using ```.param()``` function
 
 ```swift
 router.bind("/route/:id") { (req) -> Void in
