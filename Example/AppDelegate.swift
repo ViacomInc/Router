@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let detail: ViewController = storyboard.instantiateViewControllerWithIdentifier("routeOneDetail") as! ViewController
             detail.debugText = req.route.route
+            detail.id = req.param("id")!
             
             root.pushViewController(list, animated: false)
             root.pushViewController(detail, animated: true)
