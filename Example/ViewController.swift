@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         }
         
         if let id = id {
-            debugText.text += "- { id: '\(id)'}"
+            debugLabel.text! += "- { id: '\(id)'}"
         }
     }
 
