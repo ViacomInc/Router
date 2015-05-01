@@ -120,3 +120,7 @@ router.bind("/route/:id") { (req) -> Void in
 - Write test(s) around the new feature
 - Implement the feature
 - Send a Pull Request
+
+## License
+
+Licensed under the Apache License, Version 2.0. See LICENSE for details.
