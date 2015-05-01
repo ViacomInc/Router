@@ -10,8 +10,9 @@ import UIKit
 
 public class Router {
     
-    public typealias routeHandler = (req: Request) -> Void
-    internal var routes: [Route: routeHandler] = [Route: routeHandler]()
+    public typealias RouteHandler = (req: Request) -> Void
+    private var orderedRoutes: [Route] = [Route]()
+    private var routes: [Route: RouteHandler] = [Route: RouteHandler]()
     
     public init() {}
     
@@ -21,8 +22,9 @@ public class Router {
         :param: aRoute A string reprsentation of the route. It can include url params, for example id in /video/:id
         :param: callback Triggered when a route is matched
     */
-    public func bind(aRoute: String, callback: routeHandler) {
+    public func bind(aRoute: String, callback: RouteHandler) {
         let route = Route(aRoute: aRoute)
+        orderedRoutes.append(route)
         routes[route] = callback
     }
     
@@ -50,7 +52,7 @@ public class Router {
         var urlParams: [NSURLQueryItem] = [NSURLQueryItem]()
         
         // match the route!
-        for (route, handler) in routes {
+        for route in orderedRoutes {
             
             if let pattern = route.routePattern, regex = NSRegularExpression(pattern: pattern,
                 options: .CaseInsensitive, error: nil) {
