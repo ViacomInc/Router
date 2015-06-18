@@ -6,7 +6,7 @@ A micro routing library written in swift, primarily for deep linking use cases
 
 > **Embedded frameworks require a minimum deployment target of iOS 8.**
 >
-> Integration can be done either Manually or through Cocoapods **eventually** 
+> Integration can be done either Manually or through Cocoapods 
 > 
 
 ### Cocoapods
