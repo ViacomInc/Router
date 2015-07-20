@@ -5,8 +5,8 @@ xcodeproj 'RouterExample'
 use_frameworks!
 
 def testing_pods
-    pod 'Quick', '~> 0.3.1'
-    pod 'Nimble', '~> 0.4.2'
+    pod 'Quick',  '= 0.5.0'
+	pod 'Nimble', '= 2.0.0-rc.1'
 end
 
 target 'RouterTests' do
