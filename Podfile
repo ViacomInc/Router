@@ -2,16 +2,16 @@ workspace 'Router'
 xcodeproj 'Router'
 xcodeproj 'RouterExample'
 
+use_frameworks!
+
 target 'RouterTests' do
-  use_frameworks!
-  pod 'Quick', '~> 0.3.1'
-  pod 'Nimble', '~> 0.4.2'
+  pod 'Quick',  '= 0.5.0'
+  pod 'Nimble', '= 2.0.0-rc.1'
   xcodeproj 'Router'
 end
 
 target 'RouterExampleTests' do
-  use_frameworks!
-  pod 'Quick', '~> 0.3.1'
-  pod 'Nimble', '~> 0.4.2'
+  pod 'Quick',  '= 0.5.0'
+  pod 'Nimble', '= 2.0.0-rc.1'
   xcodeproj 'RouterExample'
 end
