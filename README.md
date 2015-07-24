@@ -22,11 +22,10 @@ $ gem install cocoapods
 To integrate Router into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/R3dTeam/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Router', '~> 0.1'
+pod 'Router', '~> 0.0.1'
 ```
 
 Then, run the following command:
@@ -37,7 +36,7 @@ $ pod install
 
 ### Requirements
 
-- iOS 7.0+
+- iOS 8.0+
 - Xcode 6.3
 - Swift 1.2
 - Cocoapods 0.36+ (Optional)

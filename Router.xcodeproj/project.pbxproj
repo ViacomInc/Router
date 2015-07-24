@@ -203,6 +203,7 @@
 		819D12141AE5425D0009FEA1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Viacom Media Network";
 				TargetAttributes = {
