@@ -27,8 +27,8 @@ public class Router {
     /**
         Binds a route to a router
     
-        - parameter aRoute: A string reprsentation of the route. It can include url params, for example id in /video/:id
-        - parameter callback: Triggered when a route is matched
+        :param: aRoute A string reprsentation of the route. It can include url params, for example id in /video/:id
+        :param: callback Triggered when a route is matched
     */
     public func bind(aRoute: String, callback: RouteHandler) {
         let route = Route(aRoute: aRoute)
@@ -39,12 +39,12 @@ public class Router {
     /**
         Matches an incoming NSURL to a route present in the router. Returns nil if none are matched.
     
-        - parameter url: An NSURL of an incoming request to the router
-        - returns: The matched route or nil
+        :param: url An NSURL of an incoming request to the router
+        :returns: The matched route or nil
     */
     public func match(url: NSURL) -> Route? {
         
-        let routeComponents: NSURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+        var routeComponents: NSURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
 
         // form the host/path url
         var routeToMatch = ""
@@ -56,24 +56,17 @@ public class Router {
             routeToMatch += "\(path)"
         }
         
-        let queryParams: [NSURLQueryItem]? = routeComponents.queryItems
+        var queryParams: [NSURLQueryItem]? = routeComponents.queryItems as? [NSURLQueryItem]
         var urlParams: [NSURLQueryItem] = [NSURLQueryItem]()
         
         // match the route!
         for route in orderedRoutes {
             
-            if let pattern = route.routePattern {
-              
-              var regex: NSRegularExpression
-              
-              do {
-                regex = try NSRegularExpression(pattern: pattern,
-                options: .CaseInsensitive)
-              } catch let error as NSError {
-                fatalError(error.localizedDescription)
-              }
-              
-                let matches = regex.matchesInString(routeToMatch, options: [], range: NSMakeRange(0, routeToMatch.characters.count))
+            if let pattern = route.routePattern, regex = NSRegularExpression(pattern: pattern,
+                options: .CaseInsensitive, error: nil) {
+                
+                let matches: [NSTextCheckingResult] = regex.matchesInString(routeToMatch,
+                    options: .allZeros, range: NSMakeRange(0, count(routeToMatch))) as! [NSTextCheckingResult]
                     
                 // check if routeToMatch has matched
                 if matches.count > 0 {

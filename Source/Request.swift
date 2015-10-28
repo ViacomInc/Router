@@ -49,8 +49,8 @@ public class Request {
     /**
         Acessing url params in the route, ie. id from /video/:id
     
-        - parameter name: Key of the param
-        - returns: value of the the param
+        :param: name Key of the param
+        :returns: value of the the param
     */
     public func param(name: String) -> String? {
         return self.urlParams[name]
@@ -59,8 +59,8 @@ public class Request {
     /**
         Acessing query strings params in the route, ie q from /video?q=asdf
     
-        - parameter name: Key of the param
-        - returns: value of the the param
+        :param: name Key of the param
+        :returns: value of the the param
     */
     public func query(name: String) -> String? {
         if let queryParams = self.queryParams {

@@ -25,7 +25,7 @@ To integrate Router into your Xcode project using CocoaPods, specify it in your 
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Router', :git => 'https://github.com/ViacomInc/Router.git', :branch => 'swift-2.0'
+pod 'Router', '~> 0.0.1'
 ```
 
 Then, run the following command:
@@ -37,8 +37,8 @@ $ pod install
 ### Requirements
 
 - iOS 8.0+
-- Xcode 7 beta 4
-- Swift 2.0
+- Xcode 6.3
+- Swift 1.2
 - Cocoapods 0.36+ (Optional)
 
 ### Simple Usage
