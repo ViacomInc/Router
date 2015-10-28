@@ -1,4 +1,5 @@
 ### Router
+[![Build Status](https://travis-ci.org/ViacomInc/Router.svg)](https://travis-ci.org/ViacomInc/Router)
 
 A micro routing library written in swift, primarily for deep linking use cases
 
