@@ -21,8 +21,8 @@ public class Route {
     static let routeParameterPattern = ":[a-zA-Z0-9-_]+"
     static let urlParameterPattern = "([^/]+)"
     
-    let routeParameter: NSRegularExpression = try! NSRegularExpression(pattern: routeParameterPattern, options: .CaseInsensitive)
-    let urlParameter: NSRegularExpression = try! NSRegularExpression(pattern: urlParameterPattern, options: .CaseInsensitive)
+    let routeParameter: NSRegularExpression = NSRegularExpression(pattern: routeParameterPattern, options: .CaseInsensitive, error: nil)!
+    let urlParameter: NSRegularExpression = NSRegularExpression(pattern: urlParameterPattern, options: .CaseInsensitive, error: nil)!
     
     // parameterized route, ie: /video/:id
     public var route: String! {
@@ -50,18 +50,18 @@ public class Route {
     /**
         Forms a regex pattern of the route
     
-        - returns: string representation of the regex
+        :returns: string representation of the regex
     */
     func regex() -> String? {
-        let _route = "^\(route)/?$"
+        var _route = "^\(route)/?$"
         var _routeRegex: NSString = _route
-        let matches = routeParameter.matchesInString(_route, options: [],
-            range: NSMakeRange(0, _route.characters.count))
+        let matches = routeParameter.matchesInString(_route, options: .allZeros,
+            range: NSMakeRange(0, count(_route)))
 
         // range offset when replacing :params
         var offset = 0
         
-        for match in matches as [NSTextCheckingResult] {
+        for match in matches as! [NSTextCheckingResult] {
             
             var matchWithOffset: NSRange = match.range
             if offset != 0 {
@@ -75,7 +75,7 @@ public class Route {
             let name = (urlParam as NSString).substringFromIndex(1)
 
             // url params should be unique
-            if urlParamKeys.contains(name) {
+            if contains(urlParamKeys, name) {
                 let e: NSException = NSException(name:"Identical route params",
                     reason: "param \(name) was already found in url, \(route)", userInfo: nil)
                 e.raise()
@@ -88,7 +88,7 @@ public class Route {
                 withString: Route.urlParameterPattern, options: NSStringCompareOptions.LiteralSearch, range: matchWithOffset)
             
             // update offset
-            offset += Route.urlParameterPattern.characters.count - urlParam.characters.count
+            offset += count(Route.urlParameterPattern) - count(urlParam)
         }
             
         return _routeRegex as String

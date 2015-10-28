@@ -27,27 +27,27 @@ class RouterSpecs: QuickSpec {
             describe(".regex") {
                 
                 it("converts /video/:id to regex /video/([^/]+)/?") {
-                    let route = Route(aRoute: "/video/:id")
+                    var route: Route = Route(aRoute: "/video/:id")
                     expect(route.routePattern).to(equal("^/video/([^/]+)/?$"))
                 }
                 
                 it("converts /shows/:showId/video/:id to regex /shows/([^/]+)/video/([^/]+)/?") {
-                    let route = Route(aRoute: "/shows/:showId/video/:id")
+                    var route: Route = Route(aRoute: "/shows/:showId/video/:id")
                     expect(route.routePattern).to(equal("^/shows/([^/]+)/video/([^/]+)/?$"))
                 }
                 
                 it("converts routes with many params to a regex pattern") {
-                    let route = Route(aRoute: "/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f")
+                    var route: Route = Route(aRoute: "/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f")
                     expect(route.routePattern).to(equal("^/a/([^/]+)/b/([^/]+)/c/([^/]+)/d/([^/]+)/e/([^/]+)/f/([^/]+)/?$"))
                 }
                 
                 it("converts routes with many variable length params to a regex pattern") {
-                    let route = Route(aRoute: "/a/:abc/b/:bcdef/third/:cx/d/:d123/efgh/:e987654/:lastOne")
+                    var route: Route = Route(aRoute: "/a/:abc/b/:bcdef/third/:cx/d/:d123/efgh/:e987654/:lastOne")
                     expect(route.routePattern).to(equal("^/a/([^/]+)/b/([^/]+)/third/([^/]+)/d/([^/]+)/efgh/([^/]+)/([^/]+)/?$"))
                 }
                 
                 it("converts non parameterized routes to a regex pattern") {
-                    let route = Route(aRoute: "/shows")
+                    var route: Route = Route(aRoute: "/shows")
                     expect(route.routePattern).to(equal("^/shows/?$"))
                 }
                 
@@ -77,7 +77,7 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("q")).to(equal("123-_-"))
                     }
                     
-                    let matched = myRouter!.match(example)!
+                    var matched: Route = myRouter!.match(example)!
                     expect(matched.route).to(equal(route))
                 }
                 
@@ -89,7 +89,7 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("id")).to(beNil())
                     }
                     
-                    let matched = myRouter!.match(example)!
+                    var matched: Route = myRouter!.match(example)!
                     expect(matched.route).to(equal(route))
                 }
                 
@@ -109,7 +109,7 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("fq")!).to(equal("-alias"))
                     }
                     
-                    let matched = myRouter!.match(example)!
+                    var matched: Route = myRouter!.match(example)!
                     expect(matched.route).to(equal(aRoute))
                 }
                 
@@ -131,7 +131,7 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("q")!).to(equal("asdf"))
                     }
                     
-                    var matched = myRouter!.match(NSURL(string: "/video/1234/?&q=asdf")!)!
+                    var matched: Route = myRouter!.match(NSURL(string: "/video/1234/?&q=asdf")!)!
                     expect(matched.route).to(equal(route))
                     
                     matched = myRouter!.match(NSURL(string: "/video/1234?&q=asdf")!)!
@@ -144,7 +144,7 @@ class RouterSpecs: QuickSpec {
                         expect(0).to(equal(1))
                     }
                     
-                    let matched = myRouter!.match(NSURL(string: "/shows/1234/video/1234")!)
+                    var matched: Route? = myRouter!.match(NSURL(string: "/shows/1234/video/1234")!)
                     expect(matched).to(beNil())
                 }
                 
@@ -156,7 +156,7 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("id")).to(equal("asdf"))
                     }
                     
-                    let matched = myRouter!.match(example)!
+                    var matched: Route = myRouter!.match(example)!
                     expect(matched.route).to(equal(route))
                 }
                 
@@ -188,7 +188,7 @@ class RouterSpecs: QuickSpec {
                         expect(0).to(equal(1))
                     }
                     
-                    if let _ = myRouter?.match(NSURL(string: "/shows/1234")!) {
+                    if let myRoute = myRouter?.match(NSURL(string: "/shows/1234")!) {
                         expect(0).to(equal(1))
                     } else {
                         expect(0).to(equal(0))

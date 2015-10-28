@@ -30,7 +30,7 @@ class RouterTests: XCTestCase {
         
         for i in 0 ..< numOfRoutes {
             myRouter!.bind("/test/route/\(i)") { (req) -> Void in
-                print("matched \(req.route.route)", appendNewline: false)
+                println("matched \(req.route.route)")
             }
         }
         
