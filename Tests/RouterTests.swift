@@ -16,10 +16,11 @@
 
 import UIKit
 import XCTest
+@testable import Router
 
 class RouterTests: XCTestCase {
     
-    var myRouter: Router?
+    var myRouter: Router!
     let numOfRoutes = 10000
     
     
@@ -30,7 +31,7 @@ class RouterTests: XCTestCase {
         
         for i in 0 ..< numOfRoutes {
             myRouter!.bind("/test/route/\(i)") { (req) -> Void in
-                print("matched \(req.route.route)", appendNewline: false)
+                print("matched \(req.route.route)")
             }
         }
         
@@ -46,7 +47,7 @@ class RouterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
-            myRouter!.match(NSURL(string: "/test/route/\(numOfRoutes - 1)")!)
+            self.myRouter.match(NSURL(string: "/test/route/\(self.numOfRoutes - 1)")!)
         }
     }
     
