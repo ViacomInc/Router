@@ -17,6 +17,7 @@
 import UIKit
 import Quick
 import Nimble
+@testable import Router
 
 class RouterSpecs: QuickSpec {
     
@@ -27,32 +28,39 @@ class RouterSpecs: QuickSpec {
             describe(".regex") {
                 
                 it("converts /video/:id to regex /video/([^/]+)/?") {
-                    let route = Route(aRoute: "/video/:id")
+                    let route = try! Route(aRoute: "/video/:id")
                     expect(route.routePattern).to(equal("^/video/([^/]+)/?$"))
                 }
                 
                 it("converts /shows/:showId/video/:id to regex /shows/([^/]+)/video/([^/]+)/?") {
-                    let route = Route(aRoute: "/shows/:showId/video/:id")
+                    let route = try! Route(aRoute: "/shows/:showId/video/:id")
                     expect(route.routePattern).to(equal("^/shows/([^/]+)/video/([^/]+)/?$"))
                 }
                 
                 it("converts routes with many params to a regex pattern") {
-                    let route = Route(aRoute: "/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f")
+                    let route = try! Route(aRoute: "/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f")
                     expect(route.routePattern).to(equal("^/a/([^/]+)/b/([^/]+)/c/([^/]+)/d/([^/]+)/e/([^/]+)/f/([^/]+)/?$"))
                 }
                 
                 it("converts routes with many variable length params to a regex pattern") {
-                    let route = Route(aRoute: "/a/:abc/b/:bcdef/third/:cx/d/:d123/efgh/:e987654/:lastOne")
+                    let route = try! Route(aRoute: "/a/:abc/b/:bcdef/third/:cx/d/:d123/efgh/:e987654/:lastOne")
                     expect(route.routePattern).to(equal("^/a/([^/]+)/b/([^/]+)/third/([^/]+)/d/([^/]+)/efgh/([^/]+)/([^/]+)/?$"))
                 }
                 
                 it("converts non parameterized routes to a regex pattern") {
-                    let route = Route(aRoute: "/shows")
+                    let route = try! Route(aRoute: "/shows")
                     expect(route.routePattern).to(equal("^/shows/?$"))
                 }
                 
                 it("raises exception with identical url params in route") {
-                    expect(Route(aRoute: "/shows/:id/:id")).to(raiseException(named: "Identical route params"))
+                    do {
+                        let _ = try Route(aRoute: "/shows/:id/:id")
+                    } catch Route.RegexResult.DuplicateRouteParamError(let route, let param) {
+                        expect(route).to(equal("/shows/:id/:id"))
+                        expect(param).to(equal("id"))
+                    } catch {
+                        fail()
+                    }
                 }
                 
             }

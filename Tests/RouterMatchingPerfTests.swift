@@ -16,10 +16,11 @@
 
 import UIKit
 import XCTest
+@testable import Router
 
 class RouterMatchingPerfTests: XCTestCase {
 
-    var myRouter: Router?
+    var myRouter: Router!
     let numOfRoutes = 1000
     
     override func setUp() {
@@ -28,7 +29,7 @@ class RouterMatchingPerfTests: XCTestCase {
         myRouter = Router()
         
         for i in 0 ..< numOfRoutes {
-            myRouter!.bind("/\(i)/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f") { (req) -> Void in
+            myRouter.bind("/\(i)/a/:a/b/:b/c/:c/d/:d/e/:e/f/:f") { (req) -> Void in
                 XCTAssert(req.param("a")! == "apple", "Invalid req param")
                 XCTAssert(req.param("b")! == "bar" , "Invalid req param")
                 XCTAssert(req.param("c")! == "cat" , "Invalid req param")
@@ -50,7 +51,7 @@ class RouterMatchingPerfTests: XCTestCase {
         // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
-            myRouter!.match(NSURL(string: "/\(numOfRoutes - 1)/a/apple/b/bar/c/cat/d/dog/e/elephant/f/asdf1234")!)
+            self.myRouter.match(NSURL(string: "/\(self.numOfRoutes - 1)/a/apple/b/bar/c/cat/d/dog/e/elephant/f/asdf1234")!)
         }
     }
 

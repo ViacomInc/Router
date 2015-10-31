@@ -13,11 +13,8 @@
 		819D12291AE5425D0009FEA1 /* Router.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D121D1AE5425D0009FEA1 /* Router.framework */; };
 		819D12301AE5425D0009FEA1 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D122F1AE5425D0009FEA1 /* RouterTests.swift */; };
 		819D123C1AE5429A0009FEA1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D12391AE5429A0009FEA1 /* Router.swift */; };
-		819D123D1AE5429A0009FEA1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D12391AE5429A0009FEA1 /* Router.swift */; };
 		819D123E1AE5429A0009FEA1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D123A1AE5429A0009FEA1 /* Route.swift */; };
-		819D123F1AE5429A0009FEA1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D123A1AE5429A0009FEA1 /* Route.swift */; };
 		819D12401AE5429A0009FEA1 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D123B1AE5429A0009FEA1 /* Request.swift */; };
-		819D12411AE5429A0009FEA1 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D123B1AE5429A0009FEA1 /* Request.swift */; };
 		819D12441AE542EE0009FEA1 /* RouterSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D12421AE542EE0009FEA1 /* RouterSpecs.swift */; };
 /* End PBXBuildFile section */
 
@@ -314,11 +311,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				819D123F1AE5429A0009FEA1 /* Route.swift in Sources */,
 				819D12441AE542EE0009FEA1 /* RouterSpecs.swift in Sources */,
 				818515921AE6C2CF00A26C57 /* RouterMatchingPerfTests.swift in Sources */,
-				819D12411AE5429A0009FEA1 /* Request.swift in Sources */,
-				819D123D1AE5429A0009FEA1 /* Router.swift in Sources */,
 				819D12301AE5425D0009FEA1 /* RouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +428,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.viacom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,7 +447,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.viacom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,4 +1,5 @@
 ### Router
+[![Build Status](https://travis-ci.org/ViacomInc/Router.svg)](https://travis-ci.org/ViacomInc/Router)
 
 A micro routing library written in swift, primarily for deep linking use cases
 
@@ -25,7 +26,7 @@ To integrate Router into your Xcode project using CocoaPods, specify it in your 
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Router', :git => 'https://github.com/ViacomInc/Router.git', :branch => 'swift-2.0'
+pod 'Router', '~> 1.0.0'
 ```
 
 Then, run the following command:
@@ -37,7 +38,7 @@ $ pod install
 ### Requirements
 
 - iOS 8.0+
-- Xcode 7 beta 4
+- Xcode 7.1
 - Swift 2.0
 - Cocoapods 0.36+ (Optional)
 
@@ -47,16 +48,16 @@ $ pod install
 import Router
 
 // create your router
-let router: Router = Router()
+let router = Router()
 
 // bind your routes with a callback
 router.bind("/route/:id") { (req) -> Void in
-    println(req.param("id")!)
+    print(req.param("id")!)
 }
 
 // match a route
 let url = NSURL(string: "routerapp://route/abc123")!
-var route = router.match(url)
+let route = router.match(url)
 ```
 
 ### Route binding
@@ -65,7 +66,7 @@ Bind a closure to a route definition
 
 ```swift
 router.bind("/route/:id") { (req) -> Void in
-    println(req.param("id")!)
+    print(req.param("id")!)
 }
 ```
 
@@ -75,7 +76,7 @@ Matches an incoming url to a route in the Router. If a match is made, the closur
 
 ```swift
 let url = NSURL(string: "routerapp://route/abc123")!
-var route = router.match(url)
+let route = router.match(url)
 ```
 
 
