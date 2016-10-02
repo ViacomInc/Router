@@ -16,32 +16,32 @@
 
 import UIKit
 
-public class Route {
+open class Route {
     
     enum Pattern: String {
         case RouteParam = ":[a-zA-Z0-9-_]+"
         case UrlParam = "([^/]+)"
     }
     
-    enum RegexResult: ErrorType, CustomDebugStringConvertible {
-        case Success(regex: String)
-        case DuplicateRouteParamError(route: String, urlParam: String)
+    enum RegexResult: Error, CustomDebugStringConvertible {
+        case success(regex: String)
+        case duplicateRouteParamError(route: String, urlParam: String)
         
         var debugDescription: String {
             switch self {
-            case Success(let regex):
+            case .success(let regex):
                 return "successfully parsed to \(regex)"
-            case DuplicateRouteParamError(let route, let urlParam):
+            case .duplicateRouteParamError(let route, let urlParam):
                 return "duplicate url param \(urlParam) was found in \(route)"
             }
         }
     }
     
-    let routeParameter = try! NSRegularExpression(pattern: .RouteParam, options: .CaseInsensitive)
-    let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .CaseInsensitive)
+    let routeParameter = try! NSRegularExpression(pattern: .RouteParam, options: .caseInsensitive)
+    let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .caseInsensitive)
     
     // parameterized route, ie: /video/:id
-    public let route: String
+    open let route: String
     
     // route in its regular expression pattern, ie: /video/([^/]+)
     var routePattern: String?
@@ -52,10 +52,10 @@ public class Route {
     init(aRoute: String) throws {
         route = aRoute
         switch regex() {
-        case .Success(let regex):
+        case .success(let regex):
             routePattern = regex
-        case .DuplicateRouteParamError(let route, let urlParam):
-            throw RegexResult.DuplicateRouteParamError(route: route, urlParam: urlParam)
+        case .duplicateRouteParamError(let route, let urlParam):
+            throw RegexResult.duplicateRouteParamError(route: route, urlParam: urlParam)
         }
     }
     
@@ -67,7 +67,7 @@ public class Route {
     func regex() -> RegexResult {
         let _route = "^\(route)/?$"
         var _routeRegex = NSString(string: _route)
-        let matches = routeParameter.matchesInString(_route, options: [],
+        let matches = routeParameter.matches(in: _route, options: [],
             range: NSMakeRange(0, _route.characters.count))
 
         // range offset when replacing :params
@@ -81,27 +81,27 @@ public class Route {
             }
             
             // route param (ie. :id)
-            let urlParam = _routeRegex.substringWithRange(matchWithOffset)
+            let urlParam = _routeRegex.substring(with: matchWithOffset)
             
             // route param with ':' (ie. id)
-            let name = (urlParam as NSString).substringFromIndex(1)
+            let name = (urlParam as NSString).substring(from: 1)
 
             // url params should be unique
             if urlParamKeys.contains(name) {
-                return .DuplicateRouteParamError(route: route, urlParam: name)
+                return .duplicateRouteParamError(route: route, urlParam: name)
             } else {
                 urlParamKeys.append(name)
             }
             
             // replace :params with regex
-            _routeRegex = _routeRegex.stringByReplacingOccurrencesOfString(urlParam,
-                withString: Pattern.UrlParam.rawValue, options: NSStringCompareOptions.LiteralSearch, range: matchWithOffset)
+            _routeRegex = _routeRegex.replacingOccurrences(of: urlParam,
+                with: Pattern.UrlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
             offset += Pattern.UrlParam.rawValue.characters.count - urlParam.characters.count
         }
             
-        return .Success(regex: _routeRegex as String)
+        return .success(regex: _routeRegex as String)
     }
 }
 
@@ -126,7 +126,7 @@ public func ==(lhs: Route, rhs: Route) -> Bool {
 
 extension NSRegularExpression {
     
-    convenience init(pattern: Route.Pattern, options: NSRegularExpressionOptions) throws {
+    convenience init(pattern: Route.Pattern, options: NSRegularExpression.Options) throws {
         try self.init(pattern: pattern.rawValue, options: options)
     }
     

@@ -1,20 +1,20 @@
 workspace 'Router'
-xcodeproj 'Router'
-xcodeproj 'RouterExample'
+project 'Router'
+project 'RouterExample'
 
 use_frameworks!
 
 def testing_pods
-  pod 'Quick', '~> 0.8.0'
-  pod 'Nimble', '3.0.0'
+  pod 'Quick'
+  pod 'Nimble'
 end
 
 target 'RouterTests' do
   testing_pods
-  xcodeproj 'Router'
+  project 'Router'
 end
 
 target 'RouterExampleTests' do
   testing_pods
-  xcodeproj 'RouterExample'
+  project 'RouterExample'
 end
