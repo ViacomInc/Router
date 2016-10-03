@@ -6,7 +6,7 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
   matrix:
-    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator9.1 
+    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator9.1
     - DESTINATION="OS=8.2,name=iPhone 5"      SCHEME="Router" SDK=iphonesimulator9.1
     - DESTINATION="OS=8.3,name=iPhone 5S"     SCHEME="Router" SDK=iphonesimulator9.1
     - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator9.1
@@ -15,7 +15,7 @@ env:
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
-script: 
+script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -workspace Router.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
