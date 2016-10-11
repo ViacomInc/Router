@@ -1,5 +1,9 @@
 language: objective-c
 osx_image: xcode8
+install: bundle install --without production --deployment
+cache:
+  directories:
+    - vendor/bundle
 
 env:
   global:
