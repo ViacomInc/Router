@@ -6,11 +6,11 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
   matrix:
-    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=8.2,name=iPhone 5"      SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=8.3,name=iPhone 5S"     SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="Router" SDK=iphonesimulator9.1
+    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.2,name=iPhone 5"      SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.3,name=iPhone 5S"     SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="Router" SDK=iphonesimulator10.0
 
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
