@@ -6,7 +6,7 @@ use_frameworks!
 
 def testing_pods
   pod 'Quick'
-  pod 'Nimble'
+  pod 'Nimble', '~> 5.0.0'
 end
 
 target 'RouterTests' do
