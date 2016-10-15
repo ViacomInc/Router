@@ -15,6 +15,10 @@ env:
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - bundler exec pod spec cat Nimble
+  - bundler exec pod list --stats
+  - bundler exec pod repo list
+  - bundler exec pod repo update
+  - bundler exec pod spec cat Nimble
 
 script:
   - set -o pipefail
