@@ -1,16 +1,12 @@
-use_frameworks!
+platform :ios, '8.0'
+source 'https://github.com/CocoaPods/Specs.git'
 
-def testing_pods
-  pod 'Quick'
+target 'RouterTests' do
+  use_frameworks!
   pod 'Nimble', '~> 5.0.0'
 end
 
-target 'RouterTests' do
-  testing_pods
-  project 'Router'
-end
-
 target 'RouterExampleTests' do
-  testing_pods
-  project 'RouterExample'
+  use_frameworks!
+  pod 'Nimble', '~> 5.0.0'
 end
