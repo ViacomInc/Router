@@ -1,12 +1,20 @@
-platform :ios, '8.0'
-source 'https://github.com/CocoaPods/Specs.git'
+workspace 'Router'
+project 'Router'
+project 'RouterExample'
+
+use_frameworks!
+
+def testing_pods
+  pod 'Quick', '~> 0.8.0'
+  pod 'Nimble', '3.0.0'
+end
 
 target 'RouterTests' do
-  use_frameworks!
-  pod 'Nimble', '~> 5.0.0'
+  testing_pods
+  project 'Router'
 end
 
 target 'RouterExampleTests' do
-  use_frameworks!
-  pod 'Nimble', '~> 5.0.0'
+  testing_pods
+  project 'RouterExample'
 end
