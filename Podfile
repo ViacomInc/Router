@@ -1,7 +1,3 @@
-workspace 'Router'
-project 'Router'
-project 'RouterExample'
-
 use_frameworks!
 
 def testing_pods
