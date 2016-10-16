@@ -12,6 +12,10 @@ env:
     - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator10.0
     - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="Router" SDK=iphonesimulator10.0
 
+cache:
+  - bundler
+  - cocoapods
+
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - bundler exec pod repo update --silent
