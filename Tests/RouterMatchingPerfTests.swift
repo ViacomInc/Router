@@ -49,9 +49,9 @@ class RouterMatchingPerfTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
-            self.myRouter.match(NSURL(string: "/\(self.numOfRoutes - 1)/a/apple/b/bar/c/cat/d/dog/e/elephant/f/asdf1234")!)
+            _ = self.myRouter.match(URL(string: "/\(self.numOfRoutes - 1)/a/apple/b/bar/c/cat/d/dog/e/elephant/f/asdf1234")!)
         }
     }
 

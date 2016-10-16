@@ -55,7 +55,7 @@ class RouterSpecs: QuickSpec {
                 it("raises exception with identical url params in route") {
                     do {
                         let _ = try Route(aRoute: "/shows/:id/:id")
-                    } catch Route.RegexResult.DuplicateRouteParamError(let route, let param) {
+                    } catch Route.RegexResult.duplicateRouteParamError(let route, let param) {
                         expect(route).to(equal("/shows/:id/:id"))
                         expect(param).to(equal("id"))
                     } catch {
@@ -78,7 +78,7 @@ class RouterSpecs: QuickSpec {
                 }
                 
                 it("allows alpha numeric and _, - characters in params") {
-                    let example = NSURL(string: "/video/123-asdf_foo-bar?q=123-_-")!
+                    let example = URL(string: "/video/123-asdf_foo-bar?q=123-_-")!
                     myRouter?.bind(route) {
                         (req) in
                         expect(req.param("id")!).to(equal("123-asdf_foo-bar"))
@@ -90,7 +90,7 @@ class RouterSpecs: QuickSpec {
                 }
                 
                 it("returns 1234 as :id in /video/1234") {
-                    let example = NSURL(string: "/video/1234")!
+                    let example = URL(string: "/video/1234")!
                     myRouter?.bind(route) {
                         (req) in
                         expect(req.param("id")!).to(equal("1234"))
@@ -102,7 +102,7 @@ class RouterSpecs: QuickSpec {
                 }
                 
                 it("handles routes with many params") {
-                    let example = NSURL(string: "/a/1/b/22/third/333/d/4444/efgh/55/6?q=asdf&fq=-alias")!
+                    let example = URL(string: "/a/1/b/22/third/333/d/4444/efgh/55/6?q=asdf&fq=-alias")!
                     let aRoute = "/a/:abc/b/:bcdef/third/:cx/d/:d123/efgh/:e987654/:lastOne"
                     
                     myRouter?.bind(aRoute) {
@@ -122,7 +122,7 @@ class RouterSpecs: QuickSpec {
                 }
                 
                 it("does not match routes with malformed query strings") {
-                    let example = NSURL(string: "/video/123/&q=asdf")!
+                    let example = URL(string: "/video/123/&q=asdf")!
                     
                     myRouter?.bind(route) {
                         (req) in
@@ -139,10 +139,10 @@ class RouterSpecs: QuickSpec {
                         expect(req.query("q")!).to(equal("asdf"))
                     }
                     
-                    var matched = myRouter!.match(NSURL(string: "/video/1234/?&q=asdf")!)!
+                    var matched = myRouter!.match(URL(string: "/video/1234/?&q=asdf")!)!
                     expect(matched.route).to(equal(route))
                     
-                    matched = myRouter!.match(NSURL(string: "/video/1234?&q=asdf")!)!
+                    matched = myRouter!.match(URL(string: "/video/1234?&q=asdf")!)!
                     expect(matched.route).to(equal(route))
                 }
                 
@@ -152,12 +152,12 @@ class RouterSpecs: QuickSpec {
                         expect(0).to(equal(1))
                     }
                     
-                    let matched = myRouter!.match(NSURL(string: "/shows/1234/video/1234")!)
+                    let matched = myRouter!.match(URL(string: "/shows/1234/video/1234")!)
                     expect(matched).to(beNil())
                 }
                 
                 it("doesn't mix url param id with query param id") {
-                    let example = NSURL(string: "/video/1234?id=asdf")!
+                    let example = URL(string: "/video/1234?id=asdf")!
                     myRouter?.bind(route) {
                         (req) in
                         expect(req.param("id")!).to(equal("1234"))
@@ -172,7 +172,7 @@ class RouterSpecs: QuickSpec {
                     myRouter?.bind("/video/jersey-shore") { (req) in expect(0).to(equal(0)) }
                     myRouter?.bind("/video/:id") { (req) in expect(0).to(equal(1)) }
                     
-                    if let myRoute = myRouter?.match(NSURL(string: "/video/jersey-shore")!) {
+                    if let myRoute = myRouter?.match(URL(string: "/video/jersey-shore")!) {
                         expect(myRoute.route).to(equal("/video/jersey-shore"))
                     } else {
                         expect(0).to(equal(1))
@@ -183,7 +183,7 @@ class RouterSpecs: QuickSpec {
                     myRouter?.bind("/video/:id") { (req) in expect(0).to(equal(0)) }
                     myRouter?.bind("/video/jersey-shore") { (req) in expect(0).to(equal(1)) }
                     
-                    if let myRoute = myRouter?.match(NSURL(string: "/video/jersey-shore")!) {
+                    if let myRoute = myRouter?.match(URL(string: "/video/jersey-shore")!) {
                         expect(myRoute.route).to(equal("/video/:id"))
                     } else {
                         expect(0).to(equal(1))
@@ -196,7 +196,7 @@ class RouterSpecs: QuickSpec {
                         expect(0).to(equal(1))
                     }
                     
-                    if let _ = myRouter?.match(NSURL(string: "/shows/1234")!) {
+                    if let _ = myRouter?.match(URL(string: "/shows/1234")!) {
                         expect(0).to(equal(1))
                     } else {
                         expect(0).to(equal(0))
