@@ -43,9 +43,9 @@ open class Router {
     }
     
     /**
-        Matches an incoming NSURL to a route present in the router. Returns nil if none are matched.
+        Matches an incoming URL to a route present in the router. Returns nil if none are matched.
     
-        - parameter url: An NSURL of an incoming request to the router
+        - parameter url: An URL of an incoming request to the router
         - returns: The matched route or nil
     */
     open func match(_ url: URL) -> Route? {
