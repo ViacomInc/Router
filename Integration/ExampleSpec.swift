@@ -26,7 +26,7 @@ class ExampleSpec: QuickSpec {
             
             it("deeplink scheme is in plist") {
                 var plist: NSDictionary?
-                if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+                if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
                     plist = NSDictionary(contentsOfFile: path)
                     
                     let urlTypes = plist!["CFBundleURLTypes"] as! NSArray

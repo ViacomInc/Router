@@ -16,14 +16,14 @@
 
 import UIKit
 
-public class Request {
+open class Request {
     
-    public let route: Route
+    open let route: Route
     
-    private var urlParams = [String: String]()
-    private var queryParams = [String: String]()
+    fileprivate var urlParams = [String: String]()
+    fileprivate var queryParams = [String: String]()
     
-    init(aRoute: Route, urlParams: [NSURLQueryItem], queryParams: [NSURLQueryItem]?) {
+    init(aRoute: Route, urlParams: [URLQueryItem], queryParams: [URLQueryItem]?) {
         route = aRoute
         for param in urlParams {
             if let value = param.value {
@@ -45,7 +45,7 @@ public class Request {
         - parameter name: Key of the param
         - returns: value of the the param
     */
-    public func param(name: String) -> String? {
+    open func param(_ name: String) -> String? {
         return urlParams[name]
     }
     
@@ -55,7 +55,7 @@ public class Request {
         - parameter name: Key of the param
         - returns: value of the the param
     */
-    public func query(name: String) -> String? {
+    open func query(_ name: String) -> String? {
         return queryParams[name]
     }
     

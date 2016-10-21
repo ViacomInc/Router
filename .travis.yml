@@ -1,21 +1,26 @@
 language: objective-c
-osx_image: xcode7.1
+osx_image: xcode8
 
 env:
   global:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
   matrix:
-    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator9.1 
-    - DESTINATION="OS=8.2,name=iPhone 5"      SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=8.3,name=iPhone 5S"     SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator9.1
-    - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="Router" SDK=iphonesimulator9.1
+    - DESTINATION="OS=8.1,name=iPhone 4S"     SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.2,name=iPhone 5"      SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.3,name=iPhone 5S"     SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=8.4,name=iPhone 6"      SCHEME="Router" SDK=iphonesimulator10.0
+    - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="Router" SDK=iphonesimulator10.0
+
+cache:
+  - bundler
+  - cocoapods
 
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - bundler exec pod repo update --silent
 
-script: 
+script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -workspace Router.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
