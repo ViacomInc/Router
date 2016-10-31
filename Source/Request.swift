@@ -18,12 +18,14 @@ import UIKit
 
 open class Request {
     
+    open let url: URL
     open let route: Route
     
     fileprivate var urlParams = [String: String]()
     fileprivate var queryParams = [String: String]()
     
-    init(aRoute: Route, urlParams: [URLQueryItem], queryParams: [URLQueryItem]?) {
+    init(aURL: URL, aRoute: Route, urlParams: [URLQueryItem], queryParams: [URLQueryItem]?) {
+        url = aURL
         route = aRoute
         for param in urlParams {
             if let value = param.value {

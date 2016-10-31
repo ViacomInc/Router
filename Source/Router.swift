@@ -92,7 +92,7 @@ open class Router {
                         
                 // fire callback
                 if let callback = routes[route] {
-                    callback(Request(aRoute: route, urlParams: urlParams, queryParams: queryParams))
+                    callback(Request(aURL: url, aRoute: route, urlParams: urlParams, queryParams: queryParams))
                 }
                         
                 // return route that was matched
