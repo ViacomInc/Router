@@ -16,11 +16,11 @@
 
 import UIKit
 
-open class Route {
+public class Route {
     
     enum Pattern: String {
-        case RouteParam = ":[a-zA-Z0-9-_]+"
-        case UrlParam = "([^/]+)"
+        case routeParam = ":[a-zA-Z0-9-_]+"
+        case urlParam = "([^/]+)"
     }
     
     enum RegexResult: Error, CustomDebugStringConvertible {
@@ -37,11 +37,11 @@ open class Route {
         }
     }
     
-    let routeParameter = try! NSRegularExpression(pattern: .RouteParam, options: .caseInsensitive)
-    let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .caseInsensitive)
+    let routeParameter = try! NSRegularExpression(pattern: Pattern.routeParam.rawValue, options: .caseInsensitive)
+    let urlParameter = try! NSRegularExpression(pattern: Pattern.urlParam.rawValue, options: .caseInsensitive)
     
     // parameterized route, ie: /video/:id
-    open let route: String
+    public let route: String
     
     // route in its regular expression pattern, ie: /video/([^/]+)
     var routePattern: String?
@@ -94,11 +94,11 @@ open class Route {
             }
             
             // replace :params with regex
-            _routeRegex = _routeRegex.replacingOccurrences(of: urlParam,
-                with: Pattern.UrlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
+           
+            _routeRegex =  _routeRegex.replacingOccurrences(of: urlParam, with: Pattern.urlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
-            offset += Pattern.UrlParam.rawValue.characters.count - urlParam.characters.count
+            offset += Pattern.urlParam.rawValue.characters.count - urlParam.characters.count
         }
             
         return .success(regex: _routeRegex as String)

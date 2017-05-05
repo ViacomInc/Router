@@ -18,10 +18,10 @@ import UIKit
 
 public typealias RouteHandler = (_ req: Request) -> Void
 
-open class Router {
+public class Router {
     
-    fileprivate var orderedRoutes = [Route]()
-    fileprivate var routes = [Route: RouteHandler]()
+    private var orderedRoutes = [Route]()
+    private var routes = [Route: RouteHandler]()
     
     public init() {}
     /**
@@ -30,7 +30,7 @@ open class Router {
         - parameter aRoute: A string reprsentation of the route. It can include url params, for example id in /video/:id
         - parameter callback: Triggered when a route is matched
     */
-    open func bind(_ aRoute: String, callback: @escaping RouteHandler) {
+    public func bind(_ aRoute: String, callback: @escaping RouteHandler) {
         do {
             let route = try Route(aRoute: aRoute)
             orderedRoutes.append(route)
@@ -43,20 +43,20 @@ open class Router {
     }
     
     /**
-        Matches an incoming URL to a route present in the router. Returns nil if none are matched.
+        Matches an incoming NSURL to a route present in the router. Returns nil if none are matched.
     
-        - parameter url: An URL of an incoming request to the router
+        - parameter url: An NSURL of an incoming request to the router
         - returns: The matched route or nil
     */
-    open func match(_ url: URL) -> Route? {
+    public func match(_ url: URL) -> Route? {
         
-        guard let routeComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+        guard let routeComponents =  NSURLComponents(url: url, resolvingAgainstBaseURL: false) else {
             return nil
         }
         
         // form the host/path url
         let host = routeComponents.host.flatMap({"/\($0)"}) ?? ""
-        let path = routeComponents.path 
+        let path = routeComponents.path.flatMap({$0}) ?? ""
         let routeToMatch = "\(host)\(path)"
         let queryParams = routeComponents.queryItems
         var urlParams = [URLQueryItem]()
@@ -72,7 +72,7 @@ open class Router {
             do {
                 regex = try NSRegularExpression(pattern: pattern,
                 options: .caseInsensitive)
-            } catch let error as NSError {
+            } catch let error {
                 fatalError(error.localizedDescription)
             }
               
@@ -82,14 +82,15 @@ open class Router {
             // check if routeToMatch has matched
             if matches.count > 0 {
                 let match = matches[0]
-                        
+                
                 // gather url params
                 for i in 1 ..< match.numberOfRanges {
                     let name = route.urlParamKeys[i-1]
-                    let value = (routeToMatch as NSString).substring(with: match.rangeAt(i))
+                    let range = match.rangeAt(i)
+                    let value = (routeToMatch as NSString).substring(with: range)
                     urlParams.append(URLQueryItem(name: name, value: value))
                 }
-                        
+                
                 // fire callback
                 if let callback = routes[route] {
                     callback(Request(aRoute: route, urlParams: urlParams, queryParams: queryParams))
