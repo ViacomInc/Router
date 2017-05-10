@@ -48,15 +48,23 @@ public class Router {
         - parameter url: An NSURL of an incoming request to the router
         - returns: The matched route or nil
     */
+    @discardableResult
     public func match(_ url: URL) -> Route? {
         
-        guard let routeComponents =  NSURLComponents(url: url, resolvingAgainstBaseURL: false) else {
+        // Fix a problem with the URL contains Chinese
+        guard let url =  URL(string: (url.relativeString
+            .removingPercentEncoding?
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) ?? "") else {
+            return nil
+        }
+        
+        guard let routeComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             return nil
         }
         
         // form the host/path url
         let host = routeComponents.host.flatMap({"/\($0)"}) ?? ""
-        let path = routeComponents.path.flatMap({$0}) ?? ""
+        let path = routeComponents.path
         let routeToMatch = "\(host)\(path)"
         let queryParams = routeComponents.queryItems
         var urlParams = [URLQueryItem]()
