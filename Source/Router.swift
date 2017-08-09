@@ -86,7 +86,7 @@ open class Router {
                 // gather url params
                 for i in 1 ..< match.numberOfRanges {
                     let name = route.urlParamKeys[i-1]
-                    let value = (routeToMatch as NSString).substring(with: match.rangeAt(i))
+                    let value = (routeToMatch as NSString).substring(with: match.range(at: i))
                     urlParams.append(URLQueryItem(name: name, value: value))
                 }
                         
