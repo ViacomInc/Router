@@ -5,8 +5,8 @@ project 'RouterExample'
 use_frameworks!
 
 def testing_pods
-  pod 'Quick', '0.10.0'
-  pod 'Nimble', '5.0.0'
+  pod 'Quick', '1.2.0'
+  pod 'Nimble', '7.0.2'
 end
 
 target 'RouterTests' do
@@ -22,7 +22,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '3.1'
+      config.build_settings['SWIFT_VERSION'] = '4.0'
     end
   end
 end
