@@ -98,7 +98,7 @@ open class Route {
                 with: Pattern.UrlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
-            offset += Pattern.UrlParam.rawValue.count - urlParam.characters.count
+            offset += Pattern.UrlParam.rawValue.count - urlParam.count
         }
             
         return .success(regex: _routeRegex as String)
