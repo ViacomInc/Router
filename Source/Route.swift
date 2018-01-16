@@ -68,7 +68,7 @@ open class Route {
         let _route = "^\(route)/?$"
         var _routeRegex = NSString(string: _route)
         let matches = routeParameter.matches(in: _route, options: [],
-            range: NSMakeRange(0, _route.characters.count))
+            range: NSMakeRange(0, _route.count))
 
         // range offset when replacing :params
         var offset = 0
@@ -98,7 +98,7 @@ open class Route {
                 with: Pattern.UrlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
-            offset += Pattern.UrlParam.rawValue.characters.count - urlParam.characters.count
+            offset += Pattern.UrlParam.rawValue.count - urlParam.characters.count
         }
             
         return .success(regex: _routeRegex as String)

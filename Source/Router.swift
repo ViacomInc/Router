@@ -77,7 +77,7 @@ open class Router {
             }
               
             let matches = regex.matches(in: routeToMatch, options: [],
-                range: NSMakeRange(0, routeToMatch.characters.count))
+                range: NSMakeRange(0, routeToMatch.count))
                     
             // check if routeToMatch has matched
             if matches.count > 0 {
