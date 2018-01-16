@@ -77,7 +77,7 @@ open class Router {
             }
               
             let matches = regex.matches(in: routeToMatch, options: [],
-                range: NSMakeRange(0, routeToMatch.characters.count))
+                range: NSMakeRange(0, routeToMatch.count))
                     
             // check if routeToMatch has matched
             if matches.count > 0 {
@@ -86,7 +86,7 @@ open class Router {
                 // gather url params
                 for i in 1 ..< match.numberOfRanges {
                     let name = route.urlParamKeys[i-1]
-                    let value = (routeToMatch as NSString).substring(with: match.rangeAt(i))
+                    let value = (routeToMatch as NSString).substring(with: match.range(at: i))
                     urlParams.append(URLQueryItem(name: name, value: value))
                 }
                         
