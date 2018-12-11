@@ -41,7 +41,7 @@ open class Route {
     let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .caseInsensitive)
     
     // parameterized route, ie: /video/:id
-    open let route: String
+    public let route: String
     
     // route in its regular expression pattern, ie: /video/([^/]+)
     var routePattern: String?

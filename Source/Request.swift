@@ -18,8 +18,8 @@ import UIKit
 
 open class Request {
     
-    open let url: URL
-    open let route: Route
+    public let url: URL
+    public let route: Route
     
     fileprivate var urlParams = [String: String]()
     fileprivate var queryParams = [String: String]()
