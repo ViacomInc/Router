@@ -68,7 +68,7 @@ public class Route {
         let _route = "^\(route)/?$"
         var _routeRegex = NSString(string: _route)
         let matches = routeParameter.matches(in: _route, options: [],
-            range: NSMakeRange(0, _route.characters.count))
+            range: NSMakeRange(0, _route.count))
 
         // range offset when replacing :params
         var offset = 0
@@ -98,7 +98,7 @@ public class Route {
             _routeRegex =  _routeRegex.replacingOccurrences(of: urlParam, with: Pattern.urlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
-            offset += Pattern.urlParam.rawValue.characters.count - urlParam.characters.count
+            offset += Pattern.urlParam.rawValue.count - urlParam.count
         }
             
         return .success(regex: _routeRegex as String)
@@ -110,6 +110,10 @@ public class Route {
 extension Route: Hashable {
     public var hashValue: Int {
         return self.route.hashValue
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.route.hashValue)
     }
     
 }
