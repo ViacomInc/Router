@@ -16,12 +16,12 @@
 
 import UIKit
 
-open class Request {
+public class Request {
     
-    open let route: Route
+    public let route: Route
     
-    fileprivate var urlParams = [String: String]()
-    fileprivate var queryParams = [String: String]()
+    private var urlParams = [String: String]()
+    private var queryParams = [String: String]()
     
     init(aRoute: Route, urlParams: [URLQueryItem], queryParams: [URLQueryItem]?) {
         route = aRoute
@@ -45,7 +45,7 @@ open class Request {
         - parameter name: Key of the param
         - returns: value of the the param
     */
-    open func param(_ name: String) -> String? {
+    public func param(_ name: String) -> String? {
         return urlParams[name]
     }
     
@@ -55,7 +55,7 @@ open class Request {
         - parameter name: Key of the param
         - returns: value of the the param
     */
-    open func query(_ name: String) -> String? {
+    public func query(_ name: String) -> String? {
         return queryParams[name]
     }
     

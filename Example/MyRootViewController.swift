@@ -21,14 +21,19 @@ class MyRootViewController: UIViewController {
     let scheme = "routerapp://"
     
     func doDeeplink(path: String) {
-        UIApplication.shared.openURL(URL(string: "\(scheme)\(path)")!)
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL(string: "\(scheme)\(path)")!)
+        } else {
+            UIApplication.shared.openURL(URL(string: "\(scheme)\(path)")!)
+        }
     }
 
-    @IBAction func onListClick(sender: AnyObject) {
+    @IBAction func onListClick(_ sender: AnyObject) {
         doDeeplink(path: "route/one")
     }
     
-    @IBAction func onDetailClick(sender: AnyObject) {
+    @IBAction func onDetailClick(_ sender: AnyObject) {
         doDeeplink(path: "route/one/testing1234")
     }
     
