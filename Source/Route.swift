@@ -108,10 +108,9 @@ open class Route {
 // MARK: Hashable
 
 extension Route: Hashable {
-    public var hashValue: Int {
-        return self.route.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.route)
     }
-    
 }
 
 // MARK: Equatable
