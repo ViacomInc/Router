@@ -41,7 +41,7 @@ open class Route {
     let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .caseInsensitive)
     
     // parameterized route, ie: /video/:id
-    open let route: String
+    public let route: String
     
     // route in its regular expression pattern, ie: /video/([^/]+)
     var routePattern: String?
@@ -68,7 +68,7 @@ open class Route {
         let _route = "^\(route)/?$"
         var _routeRegex = NSString(string: _route)
         let matches = routeParameter.matches(in: _route, options: [],
-            range: NSMakeRange(0, _route.characters.count))
+            range: NSMakeRange(0, _route.count))
 
         // range offset when replacing :params
         var offset = 0
@@ -98,7 +98,7 @@ open class Route {
                 with: Pattern.UrlParam.rawValue, options: NSString.CompareOptions.literal, range: matchWithOffset) as NSString
             
             // update offset
-            offset += Pattern.UrlParam.rawValue.characters.count - urlParam.characters.count
+            offset += Pattern.UrlParam.rawValue.count - urlParam.count
         }
             
         return .success(regex: _routeRegex as String)
@@ -108,10 +108,9 @@ open class Route {
 // MARK: Hashable
 
 extension Route: Hashable {
-    public var hashValue: Int {
-        return self.route.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.route)
     }
-    
 }
 
 // MARK: Equatable
